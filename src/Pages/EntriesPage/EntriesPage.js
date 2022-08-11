@@ -58,15 +58,29 @@ const EntriesPage = (props) => {
 
   // Elimizdeki verilerin istenilen sirada ve filtreleme uygulanmis hallerini hazirlayan fonksiyon
   // Elimizdeki veriyi once filtreleme kosullarini kontrol ederek filtreler ardindan istenilen siralama olcutunde siralayip yeni veri dizisini dondurur.
+
   const prepareData = () => {
     return props.data[props.type]
       .filter((e, index) => {
+        // Egerki arama kismina 3 harften fazla girdi yapildiysa BUTUN girdilerin adlariyla girilen harflerin uyustugu sonuclar dondurulur. 
         if (filterValue.length >= 3)
           return e.title.substring(0, filterValue.length) === filterValue;
+        // Egerki 3 harften az tusa basilmissa BUTUN sonuclar icerisinden ilk 18'deki verileri dondurur
         return index < 18;
       })
       .sort(sortingFunction);
+      // Verilern tipe gore siralama yapar.
   };
+
+  console.log("Elimizdeki verilerin ilk 18 tanesi:");
+
+  console.log(props.data[props.type].filter((e, index) => {
+    return index < 18;
+  }));
+
+  console.log("Ekranda gosterilen veriler: ");
+  
+  console.log(prepareData());
 
   return (
     <div className="entries-page page">

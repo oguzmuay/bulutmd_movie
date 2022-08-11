@@ -1,23 +1,24 @@
 import "./TypeCard.css";
 
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import CustomCard from "../CustomComponents/CustomCard";
+import { Card, ThemeProvider } from "@mui/material";
 
+import theme from "../../CustomThemes"
 
   // Girdilerimizin tip bilgilerini (Dizi/Film) alip o tipe ait girdileri gorebilmemiz icin siteyi navigate eden component.
 const TypeCard = (props) => {
   const navigate = useNavigate();
   return (
     <div className="type-card">
-      <Card sx={{ height: 300 }} onClick={()=>{
+      <Card onClick={()=>{
         navigate("/entries/"+props.data.url);
       }}>
         <CardMedia 
         component="img"
-        height="300"
         image = {props.data["data"].imageURL}
         alt="Image"
         />

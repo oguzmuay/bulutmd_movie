@@ -1,3 +1,10 @@
 .entry-area {
     margin: 15px;
+    .entry-flex-box {
+        width: fit-content;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content:flex-start;
+    }
 }

@@ -1,15 +1,26 @@
-import { Grid } from "@mui/material";
+import {Grid, ThemeProvider } from "@mui/material";
 import TypeCard from "../TypeCard/TypeCard";
 import EntryCard from "../EntryCard/EntryCard";
+import theme from "../../CustomThemes";
 
 import "./CardArea.css";
 
 // Elimizdeki herhangi bir turdeki kart component'ini grid icerisinde gosteren component
 const CardArea = (props) => {
+
+  const spacing = () => {
+    if(props.cardType === "type")
+      return 2;
+      
+    return 0;
+   }
+
   return (
     <div className="entry-area">
-      <Grid container spacing={2}>
-        {prepareCards(props.cardType, props.data)}
+      <Grid container 
+      spacing={spacing()}
+      >
+      {prepareCards(props.cardType,props.data)}
       </Grid>
     </div>
   );
@@ -21,17 +32,23 @@ const prepareCards = (type, data) => {
       const keys = Object.keys(data);
       return keys.map((key, index) => {
         return (
-          <Grid key={"type-" + index} item xs={12} sm={6} md={4}>
+          <ThemeProvider key={"entry-" + index} theme={theme}>
+          <Grid key={"type-" + index} item 
+          mobile={12} tablet={3}>
             <TypeCard data={{ data: data[key], url: key }} />
           </Grid>
+          </ThemeProvider>
         );
       });
     case "entry":
       return data.map((entry, index) => {
         return (
-          <Grid key={"entry-" + index} item xs={12} sm={6} md={4}>
+          <ThemeProvider key={"entry-" + index} theme={theme}>
+          <Grid key={"entry-" + index} item mb={1}
+          mobile={12} tablet={6} between={3} laptop={1.5} desktop={1}>
             <EntryCard data={entry} />
           </Grid>
+          </ThemeProvider>
         );
       });
     default:
@@ -40,3 +57,6 @@ const prepareCards = (type, data) => {
 };
 
 export default CardArea;
+/*
+
+*/

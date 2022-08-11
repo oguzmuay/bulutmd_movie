@@ -4,6 +4,9 @@ import NavigationBar from "../../Components/NavigationBar/NavigationBar";
 import "./HomePage.css";
 
 const HomePage = (props) => {
+
+  console.log(props.data)
+
   // Elimdeki dummy data icerisindeki girdi tiplerinin verilerini sakladigim bir javascript objesi.
   // Bu verileri homepage'de tekrar kullanilmak icin baslik ve resim url verisini saklar.
   // Resim url verisi elimizeki film veya dizi girdilerinin ilk 10 elamanlarindan rastgele aliniyor.

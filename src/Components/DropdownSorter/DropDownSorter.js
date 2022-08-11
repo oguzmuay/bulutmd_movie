@@ -16,7 +16,7 @@ const DropDownSorter = (props) => {
       <div className="drop-down-sorter-inner-container">
         <InputLabel id={"entry-sorter-label"}>Sorter</InputLabel>
         <Select
-          sx={{ width: 300 }}
+          sx={{ minWidth: 250, width:280}}
           labelId="entry-sorter-label"
           label="Sorter"
           onChange={props.onChange}

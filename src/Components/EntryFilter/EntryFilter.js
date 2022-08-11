@@ -9,7 +9,7 @@ const EntryFilter = (props) => {
       <div className="entry-filter-inner-container">
         <InputLabel id={"entry-filter-label"}>Filter</InputLabel>
         <TextField
-          sx={{ width: 330 }}
+          sx={{ minWidth: 250, width:280}}
           labelid="entry-filter-label"
           placeholder="Dizi / Film / Oyuncu Ara"
           onChange={(event) => {
